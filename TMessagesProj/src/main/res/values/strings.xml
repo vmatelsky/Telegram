@@ -1202,4 +1202,5 @@
     <string name="techrunch_your_city">Your city</string>
     <string name="techrunch_no_city">---</string>
     <string name="techrunch_closest_to_me">Closest to me</string>
+    <string name="techrunch_church_selection">Church selection</string>
 </resources>

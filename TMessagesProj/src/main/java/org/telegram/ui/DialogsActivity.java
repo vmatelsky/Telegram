@@ -280,11 +280,8 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             } else {
                 actionBar.setBackButtonDrawable(new MenuDrawable());
             }
-            if (BuildVars.DEBUG_VERSION) {
-                actionBar.setTitle(LocaleController.getString("AppNameBeta", R.string.AppNameBeta));
-            } else {
-                actionBar.setTitle(LocaleController.getString("AppName", R.string.AppName));
-            }
+            
+            actionBar.setTitle(context.getString(R.string.techrunch_church_selection));
         }
         actionBar.setAllowOverlayTitle(true);
 
