@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="org.telegram.techrunch.SelectCity">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/techrunch_primary_color"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            style="@style/Theme.TMessages.ListView"
+            android:text="@string/techrunch_your_city"/>
+
+        <TextView
+            android:id="@+id/techrunch_your_city_name"
+            android:layout_width="wrap_content"
+            style="@style/Theme.TMessages.ListView"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:text="@string/techrunch_no_city"/>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/techrunch_cities_list"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        style="@style/Theme.TMessages.ListView"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/techrunch_closest_to_me"
+        android:layout_width="match_parent"
+        android:clickable="true"
+        style="@style/Theme.TMessages.ListView"
+        android:layout_height="48dp"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:background="@color/techrunch_primary_color"
+        android:text="@string/techrunch_closest_to_me"/>
+
+</LinearLayout>

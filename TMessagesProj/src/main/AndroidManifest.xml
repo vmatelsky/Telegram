@@ -130,6 +130,17 @@
             android:theme="@style/Theme.TMessages.PopupNotification"
             android:windowSoftInputMode="adjustResize|stateHidden">
         </activity>
+        <activity
+            android:name="org.telegram.techrunch.SelectCity"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:theme="@style/Theme.TMessages.Start"
+            android:parentActivityName="org.telegram.ui.LaunchActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="org.telegram.ui.LaunchActivity" />
+        </activity>
 
         <receiver
             android:name=".AutoMessageHeardReceiver"

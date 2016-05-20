@@ -60,6 +60,8 @@ import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.R;
 import org.telegram.messenger.browser.Browser;
+import org.telegram.techrunch.SelectCity;
+import org.telegram.techrunch.TechrunchConfig;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.RequestDelegate;
 import org.telegram.tgnet.TLObject;
@@ -124,7 +126,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
         NativeCrashManager.handleDumpFiles(this);
 
         if (!UserConfig.isClientActivated()) {
-            Intent intent = getIntent();
+        Intent intent = getIntent();
             if (intent != null && intent.getAction() != null && (Intent.ACTION_SEND.equals(intent.getAction()) || intent.getAction().equals(Intent.ACTION_SEND_MULTIPLE))) {
                 super.onCreate(savedInstanceState);
                 finish();
@@ -141,6 +143,14 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     return;
                 }
             }
+        }
+
+        TechrunchConfig config = new TechrunchConfig(this);
+        if (!config.isCitySelected()) {
+            startActivity(new Intent(this, SelectCity.class));
+            super.onCreate(savedInstanceState);
+            finish();
+            return;
         }
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
