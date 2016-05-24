@@ -60,6 +60,7 @@ import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.techranch.R;
 import org.telegram.messenger.browser.Browser;
+import org.telegram.techrunch.my_churches.MyChurchesActivity;
 import org.telegram.techrunch.select_city.SelectCity;
 import org.telegram.techrunch.TechrunchConfig;
 import org.telegram.tgnet.ConnectionsManager;
@@ -328,6 +329,8 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                     }
                     drawerLayoutContainer.closeDrawer(false);
                 } else if (position == 6) {
+                    presentFragment(new MyChurchesActivity());
+                    drawerLayoutContainer.closeDrawer(false);
                     Toast.makeText(getApplicationContext(), "My churches clicked", Toast.LENGTH_LONG).show();
                 } else if (position == 8) {
                     presentFragment(new ContactsActivity(null));
