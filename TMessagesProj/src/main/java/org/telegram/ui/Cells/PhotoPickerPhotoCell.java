@@ -17,7 +17,7 @@ import org.telegram.messenger.AnimationCompat.AnimatorListenerAdapterProxy;
 import org.telegram.messenger.AnimationCompat.AnimatorSetProxy;
 import org.telegram.messenger.AnimationCompat.ObjectAnimatorProxy;
 import org.telegram.messenger.AnimationCompat.ViewProxy;
-import org.telegram.messenger.R;
+import org.telegram.messenger.techranch.R;
 import org.telegram.ui.Components.BackupImageView;
 import org.telegram.ui.Components.CheckBox;
 import org.telegram.ui.Components.LayoutHelper;

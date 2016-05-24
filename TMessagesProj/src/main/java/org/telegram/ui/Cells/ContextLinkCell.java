@@ -32,7 +32,7 @@ import org.telegram.messenger.ImageReceiver;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MediaController;
 import org.telegram.messenger.MessageObject;
-import org.telegram.messenger.R;
+import org.telegram.messenger.techranch.R;
 import org.telegram.messenger.Utilities;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.Components.LetterDrawable;

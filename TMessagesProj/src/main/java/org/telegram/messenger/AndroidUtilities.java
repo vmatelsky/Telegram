@@ -53,6 +53,7 @@ import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.CrashManagerListener;
 import net.hockeyapp.android.UpdateManager;
 
+import org.telegram.messenger.techranch.R;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.messenger.AnimationCompat.AnimatorListenerAdapterProxy;

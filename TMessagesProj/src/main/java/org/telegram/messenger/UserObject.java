@@ -9,6 +9,7 @@
 package org.telegram.messenger;
 
 import org.telegram.PhoneFormat.PhoneFormat;
+import org.telegram.messenger.techranch.R;
 import org.telegram.tgnet.TLRPC;
 
 public class UserObject {

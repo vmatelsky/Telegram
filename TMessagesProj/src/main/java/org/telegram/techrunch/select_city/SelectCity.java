@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.R;
+import org.telegram.messenger.techranch.R;
 import org.telegram.techrunch.TechrunchConfig;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenu;

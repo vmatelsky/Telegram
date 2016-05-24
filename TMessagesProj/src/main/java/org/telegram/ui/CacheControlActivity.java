@@ -35,7 +35,7 @@ import org.telegram.messenger.FileLog;
 import org.telegram.messenger.ImageLoader;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MessagesStorage;
-import org.telegram.messenger.R;
+import org.telegram.messenger.techranch.R;
 import org.telegram.messenger.Utilities;
 import org.telegram.messenger.query.BotQuery;
 import org.telegram.tgnet.NativeByteBuffer;

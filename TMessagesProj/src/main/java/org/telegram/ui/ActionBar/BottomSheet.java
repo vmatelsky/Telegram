@@ -47,7 +47,7 @@ import org.telegram.messenger.AnimationCompat.ObjectAnimatorProxy;
 import org.telegram.messenger.AnimationCompat.ViewProxy;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.FileLog;
-import org.telegram.messenger.R;
+import org.telegram.messenger.techranch.R;
 import org.telegram.ui.Components.LayoutHelper;
 
 import java.util.ArrayList;

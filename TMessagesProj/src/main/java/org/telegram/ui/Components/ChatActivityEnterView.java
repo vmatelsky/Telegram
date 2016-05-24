@@ -61,7 +61,7 @@ import org.telegram.messenger.NotificationsController;
 import org.telegram.messenger.SendMessagesHelper;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
+import org.telegram.messenger.techranch.R;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.messenger.UserConfig;

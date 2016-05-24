@@ -26,6 +26,7 @@ import android.text.TextUtils;
 import android.util.SparseArray;
 
 import org.telegram.PhoneFormat.PhoneFormat;
+import org.telegram.messenger.techranch.R;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.RequestDelegate;
 import org.telegram.tgnet.TLObject;

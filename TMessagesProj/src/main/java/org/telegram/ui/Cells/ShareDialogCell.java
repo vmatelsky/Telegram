@@ -20,7 +20,7 @@ import android.widget.TextView;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.R;
+import org.telegram.messenger.techranch.R;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.Components.AvatarDrawable;
 import org.telegram.ui.Components.BackupImageView;

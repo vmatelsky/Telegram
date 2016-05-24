@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import org.telegram.messenger.audioinfo.AudioInfo;
 import org.telegram.messenger.query.StickersQuery;
+import org.telegram.messenger.techranch.R;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.QuickAckDelegate;
 import org.telegram.tgnet.RequestDelegate;

@@ -31,7 +31,7 @@ import android.widget.LinearLayout;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.FileLog;
-import org.telegram.messenger.R;
+import org.telegram.messenger.techranch.R;
 import org.telegram.messenger.AnimationCompat.AnimatorListenerAdapterProxy;
 import org.telegram.messenger.AnimationCompat.AnimatorSetProxy;
 import org.telegram.messenger.AnimationCompat.ObjectAnimatorProxy;

@@ -26,7 +26,7 @@ import org.telegram.messenger.AnimationCompat.ViewProxy;
 import org.telegram.messenger.MessageObject;
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.FileLoader;
-import org.telegram.messenger.R;
+import org.telegram.messenger.techranch.R;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.ui.Components.BackupImageView;
 import org.telegram.ui.Components.CheckBox;

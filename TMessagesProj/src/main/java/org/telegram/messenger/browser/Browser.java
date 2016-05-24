@@ -23,7 +23,7 @@ import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.MediaController;
-import org.telegram.messenger.R;
+import org.telegram.messenger.techranch.R;
 import org.telegram.messenger.ShareBroadcastReceiver;
 import org.telegram.messenger.support.customtabs.CustomTabsCallback;
 import org.telegram.messenger.support.customtabs.CustomTabsClient;

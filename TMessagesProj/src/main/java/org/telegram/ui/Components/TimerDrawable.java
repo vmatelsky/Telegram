@@ -19,7 +19,7 @@ import android.text.TextPaint;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.FileLog;
-import org.telegram.messenger.R;
+import org.telegram.messenger.techranch.R;
 
 public class TimerDrawable extends Drawable {
 

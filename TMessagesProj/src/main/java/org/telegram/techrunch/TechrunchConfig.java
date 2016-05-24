@@ -3,7 +3,7 @@ package org.telegram.techrunch;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import org.telegram.messenger.R;
+import org.telegram.messenger.techranch.R;
 
 /**
  * Created by matelskyvv on 5/20/16.
@@ -29,7 +29,8 @@ public class TechrunchConfig {
     }
 
     public boolean isCitySelected() {
-        return mPreferences.contains(SELECTED_CITY_KEY);
+//        return mPreferences.contains(SELECTED_CITY_KEY);
+        return false;
     }
 
 }

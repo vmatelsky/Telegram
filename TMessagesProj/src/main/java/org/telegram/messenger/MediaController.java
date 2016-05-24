@@ -52,6 +52,7 @@ import android.telephony.TelephonyManager;
 
 import org.telegram.messenger.audioinfo.AudioInfo;
 import org.telegram.messenger.query.SharedMediaQuery;
+import org.telegram.messenger.techranch.R;
 import org.telegram.messenger.video.InputSurface;
 import org.telegram.messenger.video.MP4Builder;
 import org.telegram.messenger.video.Mp4Movie;

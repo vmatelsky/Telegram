@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 
-import org.telegram.messenger.R;
+import org.telegram.messenger.techranch.R;
 
 import java.util.ArrayList;
 import java.util.List;

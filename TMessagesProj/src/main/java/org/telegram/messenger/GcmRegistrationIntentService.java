@@ -14,6 +14,8 @@ import android.content.Intent;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
 
+import org.telegram.messenger.techranch.R;
+
 public class GcmRegistrationIntentService extends IntentService {
 
     public GcmRegistrationIntentService() {

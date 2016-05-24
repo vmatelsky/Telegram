@@ -34,7 +34,7 @@ import org.telegram.messenger.support.widget.LinearLayoutManager;
 import org.telegram.messenger.support.widget.RecyclerView;
 import org.telegram.messenger.DispatchQueue;
 import org.telegram.messenger.FileLog;
-import org.telegram.messenger.R;
+import org.telegram.messenger.techranch.R;
 import org.telegram.messenger.Utilities;
 import org.telegram.messenger.AnimationCompat.AnimatorListenerAdapterProxy;
 import org.telegram.messenger.AnimationCompat.AnimatorSetProxy;

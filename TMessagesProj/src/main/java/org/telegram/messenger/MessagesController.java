@@ -26,6 +26,7 @@ import org.telegram.SQLite.SQLiteCursor;
 import org.telegram.messenger.query.BotQuery;
 import org.telegram.messenger.query.MessagesQuery;
 import org.telegram.messenger.query.StickersQuery;
+import org.telegram.messenger.techranch.R;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.RequestDelegate;
 import org.telegram.tgnet.SerializedData;

@@ -34,7 +34,7 @@ import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.Utilities;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.R;
+import org.telegram.messenger.techranch.R;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.Components.IdenticonDrawable;

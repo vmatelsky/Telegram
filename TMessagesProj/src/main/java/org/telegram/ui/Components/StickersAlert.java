@@ -35,7 +35,7 @@ import org.telegram.messenger.Emoji;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
+import org.telegram.messenger.techranch.R;
 import org.telegram.messenger.query.StickersQuery;
 import org.telegram.messenger.support.widget.GridLayoutManager;
 import org.telegram.messenger.support.widget.RecyclerView;

@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.telegram.messenger.R;
+import org.telegram.messenger.techranch.R;
 
 import java.util.List;
 

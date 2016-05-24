@@ -14,6 +14,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
+import org.telegram.messenger.techranch.R;
 import org.telegram.tgnet.AbstractSerializedData;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.NativeByteBuffer;

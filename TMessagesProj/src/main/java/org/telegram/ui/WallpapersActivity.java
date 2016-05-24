@@ -45,7 +45,7 @@ import org.telegram.messenger.FileLoader;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.MessagesStorage;
 import org.telegram.messenger.NotificationCenter;
-import org.telegram.messenger.R;
+import org.telegram.messenger.techranch.R;
 
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenu;

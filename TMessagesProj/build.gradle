@@ -10,6 +10,8 @@ dependencies {
     compile "com.google.android.gms:play-services-maps:8.4.0"
     compile 'net.hockeyapp.android:HockeySDK:3.6.+'
     compile 'com.googlecode.mp4parser:isoparser:1.0.+'
+
+    compile 'com.android.support:design:23.3.0'
 }
 
 android {
@@ -17,7 +19,7 @@ android {
     buildToolsVersion '23.0.3'
 
     useLibrary 'org.apache.http.legacy'
-    defaultConfig.applicationId = "org.telegram.messenger"
+    defaultConfig.applicationId = "org.telegram.messenger.techranch"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7

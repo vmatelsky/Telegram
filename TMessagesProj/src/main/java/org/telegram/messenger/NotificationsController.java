@@ -32,6 +32,7 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.app.RemoteInput;
 import android.util.SparseArray;
 
+import org.telegram.messenger.techranch.R;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.RequestDelegate;
 import org.telegram.tgnet.TLObject;
