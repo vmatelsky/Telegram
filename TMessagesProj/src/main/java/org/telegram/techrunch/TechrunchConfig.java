@@ -29,8 +29,7 @@ public class TechrunchConfig {
     }
 
     public boolean isCitySelected() {
-//        return mPreferences.contains(SELECTED_CITY_KEY);
-        return false;
+        return mPreferences.contains(SELECTED_CITY_KEY);
     }
 
 }
