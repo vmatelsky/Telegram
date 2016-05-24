@@ -43,7 +43,7 @@ public class DrawerLayoutAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return UserConfig.isClientActivated() ? 10 : 0;
+        return UserConfig.isClientActivated() ? 10 + 2 : 0;
     }
 
     @Override
@@ -89,12 +89,14 @@ public class DrawerLayoutAdapter extends BaseAdapter {
             } else if (i == 4) {
                 actionCell.setTextAndIcon(LocaleController.getString("NewChannel", R.string.NewChannel), R.drawable.menu_broadcast);
             } else if (i == 6) {
-                actionCell.setTextAndIcon(LocaleController.getString("Contacts", R.string.Contacts), R.drawable.menu_contacts);
-            } else if (i == 7) {
-                actionCell.setTextAndIcon(LocaleController.getString("InviteFriends", R.string.InviteFriends), R.drawable.menu_invite);
+                actionCell.setTextAndIcon(LocaleController.getString("Techranch_My_Churches", R.string.Techranch_My_Churches), R.drawable.menu_contacts);
             } else if (i == 8) {
-                actionCell.setTextAndIcon(LocaleController.getString("Settings", R.string.Settings), R.drawable.menu_settings);
+                actionCell.setTextAndIcon(LocaleController.getString("Contacts", R.string.Contacts), R.drawable.menu_contacts);
             } else if (i == 9) {
+                actionCell.setTextAndIcon(LocaleController.getString("InviteFriends", R.string.InviteFriends), R.drawable.menu_invite);
+            } else if (i == 10) {
+                actionCell.setTextAndIcon(LocaleController.getString("Settings", R.string.Settings), R.drawable.menu_settings);
+            } else if (i == 11) {
                 actionCell.setTextAndIcon(LocaleController.getString("TelegramFaq", R.string.TelegramFaq), R.drawable.menu_help);
             }
         }
@@ -109,6 +111,8 @@ public class DrawerLayoutAdapter extends BaseAdapter {
         } else if (i == 1) {
             return 1;
         } else if (i == 5) {
+            return 2;
+        }  else if (i == 7) {
             return 2;
         }
         return 3;
