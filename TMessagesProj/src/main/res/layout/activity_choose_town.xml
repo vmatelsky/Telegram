@@ -4,48 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:orientation="vertical"
-    tools:context="org.telegram.techrunch.SelectCity">
-    
-    <LinearLayout
+    tools:context="org.telegram.techrunch.select_city.SelectCity">
+
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/techrunch_primary_color"
-        android:orientation="vertical">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <FrameLayout
+            android:id="@+id/toolbar_place"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            style="@style/Theme.TMessages.ListView"
-            android:text="@string/techrunch_your_city"/>
+            android:background="@color/techrunch_primary_color"
+            android:gravity="bottom"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/techrunch_your_city_name"
-            android:layout_width="wrap_content"
-            style="@style/Theme.TMessages.ListView"
-            android:layout_gravity="center_horizontal"
-            android:layout_height="wrap_content"
-            android:text="@string/techrunch_no_city"/>
+            <TextView
+                style="@style/Theme.TMessages.ListView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/techrunch_your_city"
+                android:textSize="15sp"/>
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/techrunch_your_city_name"
+                style="@style/Theme.TMessages.ListView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/techrunch_no_city"
+                android:textSize="25sp"/>
 
-    <ListView
+        </LinearLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/techrunch_cities_list"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
         style="@style/Theme.TMessages.ListView"
-        android:layout_height="match_parent"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
 
-    <TextView
+    <Button
         android:id="@+id/techrunch_closest_to_me"
-        android:layout_width="match_parent"
-        android:clickable="true"
         style="@style/Theme.TMessages.ListView"
+        android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:gravity="center"
-        android:textAllCaps="true"
         android:background="@color/techrunch_primary_color"
-        android:text="@string/techrunch_closest_to_me"/>
+        android:gravity="center"
+        android:text="@string/techrunch_closest_to_me"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"/>
 
 </LinearLayout>

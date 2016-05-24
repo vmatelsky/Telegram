@@ -60,7 +60,7 @@ import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.NotificationCenter;
 import org.telegram.messenger.R;
 import org.telegram.messenger.browser.Browser;
-import org.telegram.techrunch.SelectCity;
+import org.telegram.techrunch.select_city.SelectCity;
 import org.telegram.techrunch.TechrunchConfig;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.RequestDelegate;
