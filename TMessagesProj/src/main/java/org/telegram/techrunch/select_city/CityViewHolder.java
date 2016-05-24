@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import org.telegram.messenger.techranch.R;
 import org.telegram.techrunch.TechrunchConfig;
 
 /**
@@ -13,15 +14,26 @@ import org.telegram.techrunch.TechrunchConfig;
  */
 public class CityViewHolder extends ViewHolder {
 
+    TextView mCityField;
+    View mNearMeField;
+
     public CityViewHolder(final View itemView) {
         super(itemView);
+        mCityField = (TextView) itemView.findViewById(R.id.city_field);
+        mNearMeField = itemView.findViewById(R.id.ic_near_me);
     }
 
     public void bind(final Context context, final String city, final OnCityClickedListener listener) {
-        ((TextView)itemView).setText(city);
+        mCityField.setText(city);
 
-        String selectedCity = new TechrunchConfig(context).getSelectedCity();
-        itemView.setSelected(city.equals(selectedCity));
+        final TechrunchConfig config = new TechrunchConfig(context);
+        String selectedCity = config.getSelectedCity();
+        final boolean isSelected = city.equals(selectedCity);
+        itemView.setSelected(isSelected);
+
+        boolean canDisplayNearMe = isSelected && config.isUseNearMeEnabled();
+        int nearMeVisibility = canDisplayNearMe ? View.VISIBLE : View.INVISIBLE;
+        mNearMeField.setVisibility(nearMeVisibility);
 
         itemView.setOnClickListener(new OnClickListener() {
             @Override

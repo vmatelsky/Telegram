@@ -103,7 +103,11 @@ public class SelectCity extends AppCompatActivity implements OnCityClickedListen
         mClosestToMe.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(final View v) {
-                Toast.makeText(SelectCity.this, "Closest to me clicked", Toast.LENGTH_SHORT).show();
+                final TechrunchConfig config = new TechrunchConfig(SelectCity.this);
+
+                config.setUseNearMe(!config.isUseNearMeEnabled());
+
+                mCitiesAdapter.notifyDataSetChanged();
             }
         });
     }

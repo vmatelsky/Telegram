@@ -11,6 +11,7 @@ import org.telegram.messenger.techranch.R;
 public class TechrunchConfig {
 
     private static final String SELECTED_CITY_KEY = "selected city";
+    private static final String USE_NEAR_ME_KEY = "use near me";
 
     private final Context mContext;
     private final SharedPreferences mPreferences;
@@ -30,6 +31,14 @@ public class TechrunchConfig {
 
     public boolean isCitySelected() {
         return mPreferences.contains(SELECTED_CITY_KEY);
+    }
+
+    public void setUseNearMe(boolean value) {
+        mPreferences.edit().putBoolean(USE_NEAR_ME_KEY, value).apply();
+    }
+
+    public boolean isUseNearMeEnabled() {
+        return mPreferences.getBoolean(USE_NEAR_ME_KEY, false);
     }
 
 }
