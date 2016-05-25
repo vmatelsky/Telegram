@@ -158,7 +158,11 @@ public class SelectCity extends BaseFragment implements OnCityClickedListener {
         subheader.addView(mSelectedCity, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
         layout.addView(subheader, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
+        View shadowView = new View(context);
+        shadowView.setBackgroundResource(R.drawable.header_shadow);
+
         FrameLayout container = new FrameLayout(context);
+        container.addView(shadowView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 3));
         container.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
         layout.addView(container, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
