@@ -1,57 +1,24 @@
 package org.telegram.techrunch.my_churches;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
-import android.support.v7.widget.ViewUtils;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AbsListView;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
 
-import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.ApplicationLoader;
-import org.telegram.messenger.ContactsController;
-import org.telegram.messenger.FileLog;
 import org.telegram.messenger.LocaleController;
-import org.telegram.messenger.MessagesController;
-import org.telegram.messenger.MessagesStorage;
-import org.telegram.messenger.SecretChatHelper;
-import org.telegram.messenger.UserConfig;
 import org.telegram.messenger.techranch.R;
 import org.telegram.techrunch.select_city.SelectCity;
-import org.telegram.tgnet.TLRPC;
-import org.telegram.tgnet.TLRPC.User;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenu;
 import org.telegram.ui.ActionBar.ActionBarMenuItem;
 import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.Adapters.ContactsAdapter;
-import org.telegram.ui.Adapters.SearchAdapter;
-import org.telegram.ui.ChannelCreateActivity;
-import org.telegram.ui.ChannelIntroActivity;
-import org.telegram.ui.ChatActivity;
 import org.telegram.ui.Components.LayoutHelper;
-import org.telegram.ui.Components.LetterSectionsListView;
-import org.telegram.ui.GroupCreateActivity;
-import org.telegram.ui.GroupInviteActivity;
-
-import java.util.ArrayList;
 
 /**
  * Created by vlad on 5/24/16.
@@ -95,8 +62,6 @@ public class MyChurchesActivity extends BaseFragment {
         });
         item.getSearchField().setHint(LocaleController.getString("Search", R.string.Search));
 
-
-
         fragmentView = new FrameLayout(context);
 
         LinearLayout emptyTextLayout = new LinearLayout(context);
@@ -115,13 +80,12 @@ public class MyChurchesActivity extends BaseFragment {
             }
         });
 
-
         Button submit = new Button(context);
         submit.setText("Выбрать город");
         submit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(final View view) {
-                context.startActivity(new Intent(context, SelectCity.class));
+                presentFragment(new SelectCity(), false);
             }
         });
 

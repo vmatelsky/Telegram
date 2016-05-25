@@ -1,11 +1,11 @@
 package org.telegram.techrunch.select_city;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import org.telegram.messenger.support.widget.RecyclerView.ViewHolder;
 import org.telegram.messenger.techranch.R;
 import org.telegram.techrunch.TechranchConfig;
 
@@ -14,13 +14,13 @@ import org.telegram.techrunch.TechranchConfig;
  */
 public class CityViewHolder extends ViewHolder {
 
-    TextView mCityField;
-    View mNearMeField;
+    private final TextView mCityField;
+    private final View mNearMeField;
 
-    public CityViewHolder(final View itemView) {
+    public CityViewHolder(final View itemView, final TextView cityField, final View nearMeField) {
         super(itemView);
-        mCityField = (TextView) itemView.findViewById(R.id.city_field);
-        mNearMeField = itemView.findViewById(R.id.ic_near_me);
+        mCityField = cityField;
+        mNearMeField = nearMeField;
     }
 
     public void bind(final Context context, final String city, final OnCityClickedListener listener) {
@@ -29,7 +29,12 @@ public class CityViewHolder extends ViewHolder {
         final TechranchConfig config = new TechranchConfig(context);
         String selectedCity = config.getSelectedCity();
         final boolean isSelected = city.equals(selectedCity);
-        itemView.setSelected(isSelected);
+
+        if (isSelected) {
+            mCityField.setTextColor(context.getResources().getColor(R.color.techranch_selected));
+        } else {
+            mCityField.setTextColor(context.getResources().getColor(R.color.techranch_unselected));
+        }
 
         boolean canDisplayNearMe = isSelected && config.isUseNearMeEnabled();
         int nearMeVisibility = canDisplayNearMe ? View.VISIBLE : View.INVISIBLE;

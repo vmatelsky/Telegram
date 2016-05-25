@@ -1,12 +1,17 @@
 package org.telegram.techrunch.select_city;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
+import android.view.Gravity;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import org.telegram.messenger.AndroidUtilities;
+import org.telegram.messenger.LocaleController;
+import org.telegram.messenger.support.widget.RecyclerView;
 import org.telegram.messenger.techranch.R;
+import org.telegram.ui.Components.LayoutHelper;
 
 import java.util.List;
 
@@ -18,39 +23,53 @@ public class CitiesAdapter extends RecyclerView.Adapter<CityViewHolder> {
     private static final int HEADER = 0;
     private static final int ITEM = 1;
 
-    private final Context mContext;
-    private final List<String> mData;
-    private List<String> mFiltered;
-    private final OnCityClickedListener mListener;
+    protected final Context mContext;
+    protected final List<String> mData;
+    protected final OnCityClickedListener mListener;
 
     public CitiesAdapter(Context context, List<String> data, OnCityClickedListener listener) {
         mContext = context;
         mData = data;
-        mFiltered = mData;
         mListener = listener;
     }
 
     @Override
     public CityViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
-        int layoutId = viewType == HEADER ? R.layout.select_city_header : R.layout.select_city_item_layout;
+        if (viewType == HEADER) {
 
-        View itemView = LayoutInflater.
-                from(mContext).
-                inflate(layoutId, parent, false);
+            TextView header = new TextView(parent.getContext());
+            header.setText(LocaleController.getString("techranch_cities", R.string.techranch_cities));
+            header.setTextColor(parent.getResources().getColor(android.R.color.darker_gray));
+            header.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT));
+            header.setPadding(AndroidUtilities.dp(10), AndroidUtilities.dp(5), 0, AndroidUtilities.dp(5));
 
-        return new CityViewHolder(itemView);
+            return new CityViewHolder(header, null, null);
+        } else {
+            LinearLayout cell = new LinearLayout(parent.getContext());
+
+            TextView cityField = new TextView(parent.getContext());
+            cell.addView(cityField, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 1, 10, 0, 0, 0));
+
+            ImageView nearMeField = new ImageView(parent.getContext());
+            nearMeField.setImageResource(R.drawable.ic_near_me);
+
+            cell.addView(nearMeField, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 0, 0, 10, 0));
+
+            cell.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, AndroidUtilities.dp(40)));
+            return new CityViewHolder(cell, cityField, nearMeField);
+        }
     }
 
     @Override
     public void onBindViewHolder(final CityViewHolder holder, final int position) {
         if (position > 0) {
-            holder.bind(mContext, mFiltered.get(position - 1), mListener);
+            holder.bind(mContext, mData.get(position - 1), mListener);
         }
     }
 
     @Override
     public int getItemCount() {
-        return mFiltered.size() + 1;
+        return mData.size() + 1;
     }
 
     @Override

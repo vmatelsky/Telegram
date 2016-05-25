@@ -1216,7 +1216,7 @@
   <string name="formatDateAtTime">%1$s в %2$s</string>
 
 
-  <string name="techrunch_select_city">Выберите город</string>
+  <string name="techrunch_select_city">Выбор города</string>
   <string name="techrunch_your_city">Ваш город</string>
   <string name="techrunch_no_city">---</string>
   <string name="techrunch_closest_to_me">Ближайшие ко мне</string>

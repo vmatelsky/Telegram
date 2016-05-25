@@ -1,32 +1,40 @@
 package org.telegram.techrunch.select_city;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.content.Context;
+import android.graphics.Color;
+import android.os.Build;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.LocaleController;
+import org.telegram.messenger.support.widget.LinearLayoutManager;
 import org.telegram.messenger.techranch.R;
 import org.telegram.techrunch.TechranchConfig;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenu;
 import org.telegram.ui.ActionBar.ActionBarMenuItem;
+import org.telegram.ui.ActionBar.BaseFragment;
+import org.telegram.ui.Components.LayoutHelper;
+import org.telegram.ui.Components.RecyclerListView;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class SelectCity extends AppCompatActivity implements OnCityClickedListener {
+public class SelectCity extends BaseFragment implements OnCityClickedListener {
 
-    RecyclerView mCitiesList;
+    private RecyclerListView listView;
+    private LinearLayoutManager layoutManager;
+
     TextView mSelectedCity;
 
-    View mClosestToMe;
+    Button mClosestToMe;
 
     TechranchConfig mConfig;
 
@@ -36,18 +44,8 @@ public class SelectCity extends AppCompatActivity implements OnCityClickedListen
     private CitiesSearchAdapter mCitiesSearchAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setBackgroundDrawableResource(R.drawable.transparent);
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose_town);
-
-        FrameLayout toolbarPlace = (FrameLayout) findViewById(R.id.toolbar_place);
-        ActionBar actionBar = new ActionBar(this);
-        toolbarPlace.addView(actionBar);
-
-        actionBar.setTitle(getString(R.string.techrunch_select_city));
+    public View createView(final Context context) {
+        actionBar.setTitle(LocaleController.getString("techrunch_select_city", R.string.techrunch_select_city));
 
         ActionBarMenu menu = actionBar.createMenu();
 
@@ -56,7 +54,7 @@ public class SelectCity extends AppCompatActivity implements OnCityClickedListen
             @Override
             public void onSearchExpand() {
                 mClosestToMe.setVisibility(View.GONE);
-                mCitiesList.setAdapter(mCitiesSearchAdapter);
+                listView.setAdapter(mCitiesSearchAdapter);
             }
 
             @Override
@@ -67,7 +65,7 @@ public class SelectCity extends AppCompatActivity implements OnCityClickedListen
             @Override
             public void onSearchCollapse() {
                 mClosestToMe.setVisibility(View.VISIBLE);
-                mCitiesList.setAdapter(mCitiesAdapter);
+                listView.setAdapter(mCitiesAdapter);
             }
 
             @Override
@@ -81,38 +79,60 @@ public class SelectCity extends AppCompatActivity implements OnCityClickedListen
             @Override
             public void onItemClick(int id) {
                 if (id == -1) {
-                    onBackPressed();
+                    finishFragment();
                 }
             }
         });
 
-        mCitiesList = (RecyclerView) findViewById(R.id.techrunch_cities_list);
-        mCitiesList.setHasFixedSize(true);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        mCitiesList.setLayoutManager(llm);
+        LinearLayout layout = new LinearLayout(context);
+        layout.setOrientation(LinearLayout.VERTICAL);
+        fragmentView = layout;
 
-        mSelectedCity = (TextView) findViewById(R.id.techrunch_your_city_name);
+        listView = new RecyclerListView(context);
+        listView.setVerticalScrollBarEnabled(true);
+        listView.setItemAnimator(null);
+        listView.setLayoutAnimation(null);
+        layoutManager = new LinearLayoutManager(context);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        listView.setLayoutManager(layoutManager);
+        if (Build.VERSION.SDK_INT >= 11) {
+            listView.setVerticalScrollbarPosition(LocaleController.isRTL ? ListView.SCROLLBAR_POSITION_LEFT : ListView.SCROLLBAR_POSITION_RIGHT);
+        }
 
-        mConfig = new TechranchConfig(this);
+        FrameLayout container = new FrameLayout(context);
+        container.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
+        layout.addView(container, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
+
+        mSelectedCity = new TextView(context);
+
+        mConfig = new TechranchConfig(context);
         setCityFromConfig();
 
-        mCities = Arrays.asList(getResources().getStringArray(R.array.cities_list));
-        mCitiesAdapter = new CitiesAdapter(this, mCities, this);
-        mCitiesSearchAdapter = new CitiesSearchAdapter(this, mCities, this);
-        mCitiesList.setAdapter(mCitiesAdapter);
+        mCities = Arrays.asList(context.getResources().getStringArray(R.array.cities_list));
+        mCitiesAdapter = new CitiesAdapter(context, mCities, this);
+        mCitiesSearchAdapter = new CitiesSearchAdapter(context, mCities, this);
+        listView.setAdapter(mCitiesAdapter);
 
-        mClosestToMe = findViewById(R.id.techrunch_closest_to_me);
+        mClosestToMe = new Button(context);
+        mClosestToMe.setText(LocaleController.getString("techrunch_closest_to_me", R.string.techrunch_closest_to_me));
+        mClosestToMe.setBackgroundColor(context.getResources().getColor(R.color.techrunch_primary_color));
+        mClosestToMe.setTextColor(Color.WHITE);
+
         mClosestToMe.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(final View v) {
-                final TechranchConfig config = new TechranchConfig(SelectCity.this);
+                final TechranchConfig config = new TechranchConfig(context);
 
                 config.setUseNearMe(!config.isUseNearMeEnabled());
 
-                mCitiesAdapter.notifyDataSetChanged();
+                listView.getAdapter().notifyDataSetChanged();
             }
         });
+
+
+        layout.addView(mClosestToMe, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, AndroidUtilities.dp(20)));
+
+        return fragmentView;
     }
 
     private void setCityFromConfig() {
@@ -123,6 +143,6 @@ public class SelectCity extends AppCompatActivity implements OnCityClickedListen
     public void onCitySelected(final String city) {
         mConfig.setSelectedCity(city);
         setCityFromConfig();
-        mCitiesList.getAdapter().notifyDataSetChanged();
+        listView.getAdapter().notifyDataSetChanged();
     }
 }

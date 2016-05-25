@@ -448,7 +448,7 @@ public class LoginActivity extends BaseFragment {
 
         TechranchConfig config = new TechranchConfig(getParentActivity());
         if (!config.isCitySelected()) {
-            getParentActivity().startActivity(new Intent(getParentActivity(), SelectCity.class));
+            presentFragment(new SelectCity(), false);
         }
     }
 

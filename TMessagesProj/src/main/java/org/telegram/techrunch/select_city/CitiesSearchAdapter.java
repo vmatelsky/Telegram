@@ -1,14 +1,8 @@
 package org.telegram.techrunch.select_city;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
-
-import org.telegram.messenger.techranch.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,32 +10,16 @@ import java.util.List;
 /**
  * Created by vlad on 5/24/16.
  */
-public class CitiesSearchAdapter extends RecyclerView.Adapter<CityViewHolder> implements Filterable {
+public class CitiesSearchAdapter extends CitiesAdapter implements Filterable {
 
     private static final int HEADER = 0;
     private static final int ITEM = 1;
 
-    private final Context mContext;
-    private final List<String> mData;
     private List<String> mFiltered;
-    private final OnCityClickedListener mListener;
 
     public CitiesSearchAdapter(Context context, final List<String> data, OnCityClickedListener listener) {
-        mContext = context;
-        mData = data;
+        super(context, data, listener);
         mFiltered = mData;
-        mListener = listener;
-    }
-
-    @Override
-    public CityViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
-        int layoutId = viewType == HEADER ? R.layout.select_city_header : R.layout.select_city_item_layout;
-
-        View itemView = LayoutInflater.
-                from(mContext).
-                inflate(layoutId, parent, false);
-
-        return new CityViewHolder(itemView);
     }
 
     @Override
