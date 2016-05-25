@@ -9,12 +9,15 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.widget.ViewUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -31,6 +34,7 @@ import org.telegram.messenger.MessagesStorage;
 import org.telegram.messenger.SecretChatHelper;
 import org.telegram.messenger.UserConfig;
 import org.telegram.messenger.techranch.R;
+import org.telegram.techrunch.select_city.SelectCity;
 import org.telegram.tgnet.TLRPC;
 import org.telegram.tgnet.TLRPC.User;
 import org.telegram.ui.ActionBar.ActionBar;
@@ -56,7 +60,7 @@ public class MyChurchesActivity extends BaseFragment {
 
 
     @Override
-    public View createView(Context context) {
+    public View createView(final Context context) {
 
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
@@ -111,9 +115,17 @@ public class MyChurchesActivity extends BaseFragment {
             }
         });
 
-;
 
-;
+        Button submit = new Button(context);
+        submit.setText("Выбрать город");
+        submit.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                context.startActivity(new Intent(context, SelectCity.class));
+            }
+        });
+
+        ((FrameLayout) fragmentView).addView(submit);
 
         return fragmentView;
     }
