@@ -7,7 +7,7 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import org.telegram.messenger.techranch.R;
-import org.telegram.techrunch.TechrunchConfig;
+import org.telegram.techrunch.TechranchConfig;
 
 /**
  * Created by vlad on 5/23/16.
@@ -26,7 +26,7 @@ public class CityViewHolder extends ViewHolder {
     public void bind(final Context context, final String city, final OnCityClickedListener listener) {
         mCityField.setText(city);
 
-        final TechrunchConfig config = new TechrunchConfig(context);
+        final TechranchConfig config = new TechranchConfig(context);
         String selectedCity = config.getSelectedCity();
         final boolean isSelected = city.equals(selectedCity);
         itemView.setSelected(isSelected);

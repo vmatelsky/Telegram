@@ -39,7 +39,7 @@ public class DialogsActivityHelper {
     @NonNull
     private static TextView createCityView(final Context context) {
         TextView city = new TextView(context);
-        TechrunchConfig config = new TechrunchConfig(context);
+        TechranchConfig config = new TechranchConfig(context);
         city.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         city.setText(config.getSelectedCity());
         city.setPaintFlags(city.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);

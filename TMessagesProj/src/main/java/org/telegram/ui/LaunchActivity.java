@@ -62,7 +62,7 @@ import org.telegram.messenger.techranch.R;
 import org.telegram.messenger.browser.Browser;
 import org.telegram.techrunch.my_churches.MyChurchesActivity;
 import org.telegram.techrunch.select_city.SelectCity;
-import org.telegram.techrunch.TechrunchConfig;
+import org.telegram.techrunch.TechranchConfig;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.RequestDelegate;
 import org.telegram.tgnet.TLObject;
@@ -146,7 +146,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             }
         }
 
-        TechrunchConfig config = new TechrunchConfig(this);
+        TechranchConfig config = new TechranchConfig(this);
         if (!config.isCitySelected()) {
             startActivity(new Intent(this, SelectCity.class));
             super.onCreate(savedInstanceState);

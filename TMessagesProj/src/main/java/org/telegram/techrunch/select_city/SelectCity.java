@@ -9,11 +9,10 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.techranch.R;
-import org.telegram.techrunch.TechrunchConfig;
+import org.telegram.techrunch.TechranchConfig;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenu;
 import org.telegram.ui.ActionBar.ActionBarMenuItem;
@@ -28,7 +27,7 @@ public class SelectCity extends AppCompatActivity implements OnCityClickedListen
 
     View mClosestToMe;
 
-    TechrunchConfig mConfig;
+    TechranchConfig mConfig;
 
     private List<String> mCities;
 
@@ -91,7 +90,7 @@ public class SelectCity extends AppCompatActivity implements OnCityClickedListen
 
         mSelectedCity = (TextView) findViewById(R.id.techrunch_your_city_name);
 
-        mConfig = new TechrunchConfig(this);
+        mConfig = new TechranchConfig(this);
         setCityFromConfig();
 
         mCities = Arrays.asList(getResources().getStringArray(R.array.cities_list));
@@ -103,7 +102,7 @@ public class SelectCity extends AppCompatActivity implements OnCityClickedListen
         mClosestToMe.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(final View v) {
-                final TechrunchConfig config = new TechrunchConfig(SelectCity.this);
+                final TechranchConfig config = new TechranchConfig(SelectCity.this);
 
                 config.setUseNearMe(!config.isUseNearMeEnabled());
 

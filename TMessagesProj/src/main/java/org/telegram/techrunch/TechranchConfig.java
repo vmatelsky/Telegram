@@ -8,7 +8,7 @@ import org.telegram.messenger.techranch.R;
 /**
  * Created by matelskyvv on 5/20/16.
  */
-public class TechrunchConfig {
+public class TechranchConfig {
 
     private static final String SELECTED_CITY_KEY = "selected city";
     private static final String USE_NEAR_ME_KEY = "use near me";
@@ -16,7 +16,7 @@ public class TechrunchConfig {
     private final Context mContext;
     private final SharedPreferences mPreferences;
 
-    public TechrunchConfig(Context context) {
+    public TechranchConfig(Context context) {
         mContext = context;
         mPreferences = context.getSharedPreferences("techrunch_churches", Context.MODE_PRIVATE);
     }
