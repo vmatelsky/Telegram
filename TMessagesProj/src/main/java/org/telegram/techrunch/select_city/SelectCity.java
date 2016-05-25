@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.telegram.messenger.AndroidUtilities;
@@ -158,20 +159,13 @@ public class SelectCity extends BaseFragment implements OnCityClickedListener {
         subheader.addView(mSelectedCity, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
         layout.addView(subheader, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
 
-        View shadowView = new View(context);
-        shadowView.setBackgroundResource(R.drawable.header_shadow);
-
-        FrameLayout container = new FrameLayout(context);
-        container.addView(shadowView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 3));
-        container.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
-        layout.addView(container, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
-
         mCities = Arrays.asList(context.getResources().getStringArray(R.array.cities_list));
         mCitiesAdapter = new CitiesAdapter(context, mCities, this);
         mCitiesSearchAdapter = new CitiesSearchAdapter(context, mCities, this);
         listView.setAdapter(mCitiesAdapter);
 
         mClosestToMe = new Button(context);
+        mClosestToMe.setGravity(Gravity.CENTER);
         mClosestToMe.setText(LocaleController.getString("techrunch_closest_to_me", R.string.techrunch_closest_to_me));
         mClosestToMe.setBackgroundColor(context.getResources().getColor(R.color.techrunch_primary_color));
         mClosestToMe.setTextColor(Color.WHITE);
@@ -187,8 +181,24 @@ public class SelectCity extends BaseFragment implements OnCityClickedListener {
             }
         });
 
+        RelativeLayout container = new RelativeLayout(context);
 
-        layout.addView(mClosestToMe, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, AndroidUtilities.dp(20)));
+        View shadowView = new View(context);
+        shadowView.setBackgroundResource(R.drawable.header_shadow);
+        container.addView(shadowView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, 3));
+
+        container.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
+
+        final int bottomMargin = 48;
+        FrameLayout bottomButtonContainer = new FrameLayout(context);
+        final FrameLayout.LayoutParams bottomButtonLp = LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, bottomMargin, Gravity.BOTTOM);
+        bottomButtonContainer.addView(mClosestToMe, bottomButtonLp);
+
+        final FrameLayout.LayoutParams lp = LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT);
+        lp.setMargins(0, 0, 0, AndroidUtilities.dp(bottomMargin));
+        bottomButtonContainer.addView(container, lp);
+
+        layout.addView(bottomButtonContainer);
 
         return fragmentView;
     }
