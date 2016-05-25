@@ -85,7 +85,7 @@ public class MyChurchesActivity extends BaseFragment {
         submit.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(final View view) {
-                presentFragment(new SelectCity(), false);
+                presentFragment(new SelectCity(false), false);
             }
         });
 

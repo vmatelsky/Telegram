@@ -16,7 +16,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import org.telegram.messenger.AndroidUtilities;
-import org.telegram.messenger.AnimationCompat.ViewProxy;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.support.widget.LinearLayoutManager;
 import org.telegram.messenger.techranch.R;
@@ -25,15 +24,16 @@ import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenu;
 import org.telegram.ui.ActionBar.ActionBarMenuItem;
 import org.telegram.ui.ActionBar.BaseFragment;
-import org.telegram.ui.Components.AvatarDrawable;
 import org.telegram.ui.Components.LayoutHelper;
 import org.telegram.ui.Components.RecyclerListView;
+import org.telegram.ui.DialogsActivity;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class SelectCity extends BaseFragment implements OnCityClickedListener {
 
+    private final boolean mNavigateToDialogsIfCityCelected;
     private RecyclerListView listView;
     private LinearLayoutManager layoutManager;
 
@@ -47,6 +47,10 @@ public class SelectCity extends BaseFragment implements OnCityClickedListener {
 
     private CitiesAdapter mCitiesAdapter;
     private CitiesSearchAdapter mCitiesSearchAdapter;
+
+    public SelectCity(final boolean navigateToDialogsIfCityCelected) {
+        mNavigateToDialogsIfCityCelected = navigateToDialogsIfCityCelected;
+    }
 
     @Override
     public View createView(final Context context) {
@@ -194,5 +198,9 @@ public class SelectCity extends BaseFragment implements OnCityClickedListener {
         mConfig.setSelectedCity(city);
         setCityFromConfig();
         listView.getAdapter().notifyDataSetChanged();
+
+        if (mNavigateToDialogsIfCityCelected) {
+            presentFragment(new DialogsActivity(null), true);
+        }
     }
 }

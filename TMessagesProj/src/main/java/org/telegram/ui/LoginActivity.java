@@ -442,13 +442,13 @@ public class LoginActivity extends BaseFragment {
 
     private void needFinishActivity() {
         clearCurrentState();
-
-        presentFragment(new DialogsActivity(null), true);
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
 
         TechranchConfig config = new TechranchConfig(getParentActivity());
         if (!config.isCitySelected()) {
-            presentFragment(new SelectCity(), false);
+            presentFragment(new SelectCity(true), true);
+        } else {
+            presentFragment(new DialogsActivity(null), true);
         }
     }
 
