@@ -331,7 +331,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 } else if (position == 6) {
                     presentFragment(new MyChurchesActivity());
                     drawerLayoutContainer.closeDrawer(false);
-                    Toast.makeText(getApplicationContext(), "My churches clicked", Toast.LENGTH_LONG).show();
                 } else if (position == 8) {
                     presentFragment(new ContactsActivity(null));
                     drawerLayoutContainer.closeDrawer(false);
