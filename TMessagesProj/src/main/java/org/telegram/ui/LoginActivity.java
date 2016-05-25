@@ -59,6 +59,8 @@ import org.telegram.messenger.BuildVars;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.techranch.R;
+import org.telegram.techrunch.TechranchConfig;
+import org.telegram.techrunch.select_city.SelectCity;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.tgnet.RequestDelegate;
 import org.telegram.tgnet.TLObject;
@@ -440,8 +442,14 @@ public class LoginActivity extends BaseFragment {
 
     private void needFinishActivity() {
         clearCurrentState();
+
         presentFragment(new DialogsActivity(null), true);
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.mainUserInfoChanged);
+
+        TechranchConfig config = new TechranchConfig(getParentActivity());
+        if (!config.isCitySelected()) {
+            getParentActivity().startActivity(new Intent(getParentActivity(), SelectCity.class));
+        }
     }
 
     private void fillNextCodeParams(Bundle params, TLRPC.TL_auth_sentCode res) {

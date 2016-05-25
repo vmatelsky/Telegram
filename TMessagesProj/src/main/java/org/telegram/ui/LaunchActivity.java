@@ -146,14 +146,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
             }
         }
 
-        TechranchConfig config = new TechranchConfig(this);
-        if (!config.isCitySelected()) {
-            startActivity(new Intent(this, SelectCity.class));
-            super.onCreate(savedInstanceState);
-            finish();
-            return;
-        }
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setTheme(R.style.Theme_TMessages);
         getWindow().setBackgroundDrawableResource(R.drawable.transparent);
