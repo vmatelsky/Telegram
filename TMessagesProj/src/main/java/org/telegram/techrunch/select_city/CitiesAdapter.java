@@ -3,8 +3,10 @@ package org.telegram.techrunch.select_city;
 import android.content.Context;
 import android.view.Gravity;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
 import org.telegram.messenger.AndroidUtilities;
@@ -45,17 +47,24 @@ public class CitiesAdapter extends RecyclerView.Adapter<CityViewHolder> {
 
             return new CityViewHolder(header, null, null);
         } else {
-            LinearLayout cell = new LinearLayout(parent.getContext());
+            FrameLayout cell = new FrameLayout(parent.getContext());
+            cell.setClickable(true);
 
             TextView cityField = new TextView(parent.getContext());
-            cell.addView(cityField, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT, 1, 10, 0, 0, 0));
+            final FrameLayout.LayoutParams layoutParams = LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT);
+            layoutParams.gravity = Gravity.CENTER_VERTICAL;
+            cell.addView(cityField, layoutParams);
 
             ImageView nearMeField = new ImageView(parent.getContext());
             nearMeField.setImageResource(R.drawable.ic_near_me);
 
-            cell.addView(nearMeField, LayoutHelper.createLinear(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT, 0, 0, 10, 0));
+            final FrameLayout.LayoutParams layoutParams1 = LayoutHelper.createFrame(LayoutHelper.WRAP_CONTENT, LayoutHelper.WRAP_CONTENT);
+            layoutParams1.gravity = Gravity.CENTER_VERTICAL | Gravity.RIGHT;
+            cell.addView(nearMeField, layoutParams1);
 
-            cell.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, AndroidUtilities.dp(40)));
+            final RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, AndroidUtilities.dp(40));
+            params.setMargins(AndroidUtilities.dp(10), 0, AndroidUtilities.dp(10), 0);
+            cell.setLayoutParams(params);
             return new CityViewHolder(cell, cityField, nearMeField);
         }
     }
