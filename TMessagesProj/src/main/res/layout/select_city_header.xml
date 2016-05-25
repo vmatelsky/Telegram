@@ -4,7 +4,7 @@
           android:layout_height="wrap_content"
           android:gravity="center_vertical"
           android:textColor="@android:color/darker_gray"
-          android:textSize="15sp"
+          android:textSize="@dimen/techranch_selected_city_text_cize"
           android:paddingLeft="@dimen/techranch_listPreferredItemPadding"
           android:paddingRight="@dimen/techranch_listPreferredItemPadding"
           android:text="@string/techranch_cities"/>

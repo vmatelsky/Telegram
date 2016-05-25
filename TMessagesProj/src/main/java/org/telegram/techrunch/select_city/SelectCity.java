@@ -3,6 +3,7 @@ package org.telegram.techrunch.select_city;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -99,14 +100,30 @@ public class SelectCity extends BaseFragment implements OnCityClickedListener {
             listView.setVerticalScrollbarPosition(LocaleController.isRTL ? ListView.SCROLLBAR_POSITION_LEFT : ListView.SCROLLBAR_POSITION_RIGHT);
         }
 
+        LinearLayout subheader = new LinearLayout(context);
+        subheader.setOrientation(LinearLayout.VERTICAL);
+        subheader.setBackgroundColor(context.getResources().getColor(R.color.techrunch_primary_color));
+
+        mSelectedCity = new TextView(context);
+        mSelectedCity.setGravity(Gravity.CENTER_HORIZONTAL);
+        mSelectedCity.setTextColor(Color.WHITE);
+        mSelectedCity.setTextSize(context.getResources().getDimension(R.dimen.techranch_selected_city_text_cize));
+        mConfig = new TechranchConfig(context);
+        setCityFromConfig();
+
+        TextView selectedCityHeader = new TextView(context);
+        selectedCityHeader.setGravity(Gravity.CENTER_HORIZONTAL);
+        selectedCityHeader.setTextColor(Color.WHITE);
+        selectedCityHeader.setText(LocaleController.getString("techrunch_your_city", R.string.techrunch_your_city));
+
+        subheader.addView(selectedCityHeader, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
+        subheader.addView(mSelectedCity, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
+
+        layout.addView(subheader, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
+
         FrameLayout container = new FrameLayout(context);
         container.addView(listView, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
         layout.addView(container, LayoutHelper.createFrame(LayoutHelper.MATCH_PARENT, LayoutHelper.WRAP_CONTENT));
-
-        mSelectedCity = new TextView(context);
-
-        mConfig = new TechranchConfig(context);
-        setCityFromConfig();
 
         mCities = Arrays.asList(context.getResources().getStringArray(R.array.cities_list));
         mCitiesAdapter = new CitiesAdapter(context, mCities, this);
