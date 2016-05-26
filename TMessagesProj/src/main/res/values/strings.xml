@@ -1206,5 +1206,6 @@
     <string name="techrunch_closest_to_me">Closest to me</string>
     <string name="techrunch_church_selection">Church selection</string>
     <string name="techranch_cities">Cities</string>
+    <string name="Techranch_Churches">Churches</string>
     <string name="Techranch_My_Churches">My Churches</string>
 </resources>

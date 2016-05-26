@@ -323,10 +323,13 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 } else if (position == 6) {
                     presentFragment(new MyChurchesActivity());
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 8) {
-                    presentFragment(new ContactsActivity(null));
+                } else if (position == 7) {
+                    presentFragment(new MyChurchesActivity());
                     drawerLayoutContainer.closeDrawer(false);
                 } else if (position == 9) {
+                    presentFragment(new ContactsActivity(null));
+                    drawerLayoutContainer.closeDrawer(false);
+                } else if (position == 10) {
                     try {
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.setType("text/plain");
@@ -336,10 +339,10 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         FileLog.e("tmessages", e);
                     }
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 10) {
+                } else if (position == 11) {
                     presentFragment(new SettingsActivity());
                     drawerLayoutContainer.closeDrawer(false);
-                } else if (position == 11) {
+                } else if (position == 12) {
                     Browser.openUrl(LaunchActivity.this, LocaleController.getString("TelegramFaqUrl", R.string.TelegramFaqUrl));
                     drawerLayoutContainer.closeDrawer(false);
                 }

@@ -1222,5 +1222,6 @@
   <string name="techrunch_closest_to_me">Ближайшие ко мне</string>
   <string name="techrunch_church_selection">Выбор храма</string>
   <string name="techranch_cities">Города</string>
+  <string name="Techranch_Churches">Храмы</string>
   <string name="Techranch_My_Churches">Мои храмы</string>
 </resources>
