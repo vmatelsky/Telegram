@@ -1,4 +1,4 @@
-package org.telegram.techrunch;
+package org.telegram.techrunch.my_churches;
 
 import org.telegram.techrunch.domain.Church;
 

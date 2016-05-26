@@ -1,38 +1,42 @@
 package org.telegram.techrunch.my_churches;
 
 import android.content.Context;
-import android.content.Intent;
-import android.view.Gravity;
-import android.view.MotionEvent;
+import android.graphics.Paint;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import org.telegram.messenger.LocaleController;
 import org.telegram.messenger.techranch.R;
+import org.telegram.techrunch.TechranchConfig;
 import org.telegram.techrunch.select_city.SelectCity;
 import org.telegram.ui.ActionBar.ActionBar;
 import org.telegram.ui.ActionBar.ActionBarMenu;
 import org.telegram.ui.ActionBar.ActionBarMenuItem;
 import org.telegram.ui.ActionBar.BaseFragment;
+import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Components.LayoutHelper;
+import org.telegram.ui.Components.RecyclerListView;
 
 /**
  * Created by vlad on 5/24/16.
  */
 public class MyChurchesActivity extends BaseFragment {
 
+    private View noChurchesView;
+    private TextView selectedCity;
 
     @Override
     public View createView(final Context context) {
 
+        Theme.loadRecources(context);
+
         actionBar.setBackButtonImage(R.drawable.ic_ab_back);
         actionBar.setAllowOverlayTitle(true);
-
-            actionBar.setTitle(LocaleController.getString("Contacts", R.string.Contacts));
+        actionBar.setTitle(LocaleController.getString("Techranch_My_Churches", R.string.Techranch_My_Churches));
 
         actionBar.setActionBarMenuOnItemClick(new ActionBar.ActionBarMenuOnItemClick() {
             @Override
@@ -62,35 +66,41 @@ public class MyChurchesActivity extends BaseFragment {
         });
         item.getSearchField().setHint(LocaleController.getString("Search", R.string.Search));
 
-        fragmentView = new FrameLayout(context);
+        final LinearLayout layout = new LinearLayout(context);
+        layout.setOrientation(LinearLayout.VERTICAL);
+        fragmentView = layout;
 
-        LinearLayout emptyTextLayout = new LinearLayout(context);
-        emptyTextLayout.setVisibility(View.INVISIBLE);
-        emptyTextLayout.setOrientation(LinearLayout.VERTICAL);
-        ((FrameLayout) fragmentView).addView(emptyTextLayout);
-        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) emptyTextLayout.getLayoutParams();
-        layoutParams.width = LayoutHelper.MATCH_PARENT;
-        layoutParams.height = LayoutHelper.MATCH_PARENT;
-        layoutParams.gravity = Gravity.TOP;
-        emptyTextLayout.setLayoutParams(layoutParams);
-        emptyTextLayout.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-            }
-        });
-
-        Button submit = new Button(context);
-        submit.setText("Выбрать город");
-        submit.setOnClickListener(new OnClickListener() {
+        final View selectCityHeader = MyChurchesActivityHelper.createSelectCityHeader(context);
+        selectedCity = (TextView) selectCityHeader.findViewById(R.id.selected_city);
+        selectedCity.setPaintFlags(selectedCity.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        selectedCity.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(final View view) {
-                presentFragment(new SelectCity(false), false);
+                presentFragment(new SelectCity(false));
             }
         });
 
-        ((FrameLayout) fragmentView).addView(submit);
+        layout.addView(selectCityHeader);
+
+        RecyclerListView listView = new RecyclerListView(context);
+        listView.setAdapter(new ChurchesAdapter());
+
+        noChurchesView = MyChurchesActivityHelper.createEmptyView(context, new OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                Toast.makeText(context, "On add church clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        layout.addView(noChurchesView, LayoutHelper.createLinear(LayoutHelper.MATCH_PARENT, LayoutHelper.MATCH_PARENT));
 
         return fragmentView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        TechranchConfig config = new TechranchConfig(getParentActivity());
+        selectedCity.setText(config.getSelectedCity());
     }
 }

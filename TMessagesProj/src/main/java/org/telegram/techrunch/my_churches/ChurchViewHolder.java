@@ -1,4 +1,4 @@
-package org.telegram.techrunch;
+package org.telegram.techrunch.my_churches;
 
 import android.view.View;
 import android.widget.TextView;

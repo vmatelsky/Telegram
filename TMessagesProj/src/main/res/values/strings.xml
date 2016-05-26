@@ -1208,4 +1208,7 @@
     <string name="techranch_cities">Cities</string>
     <string name="Techranch_Churches">Churches</string>
     <string name="Techranch_My_Churches">My Churches</string>
+    <string name="Techranch_Select_City">Select city</string>
+    <string name="Techranch_No_Churches">No churches</string>
+    <string name="Techranch_Add_Church">Add church</string>
 </resources>

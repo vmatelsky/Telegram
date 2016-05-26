@@ -1224,4 +1224,7 @@
   <string name="techranch_cities">Города</string>
   <string name="Techranch_Churches">Храмы</string>
   <string name="Techranch_My_Churches">Мои храмы</string>
+  <string name="Techranch_Select_City">Выбор города</string>
+  <string name="Techranch_No_Churches">Храмы не найдены</string>
+  <string name="Techranch_Add_Church">Добавить храм</string>
 </resources>

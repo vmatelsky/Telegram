@@ -1,13 +1,10 @@
-package org.telegram.techrunch;
+package org.telegram.techrunch.my_churches;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.support.widget.RecyclerView;
-import org.telegram.messenger.support.widget.RecyclerView.ViewHolder;
 import org.telegram.techrunch.domain.Church;
 
 import java.util.List;
